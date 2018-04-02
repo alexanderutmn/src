@@ -12,27 +12,27 @@ class Navigations extends Component {
 
         this.needButtons = [
             {
-                "classname" : "btn btn-default",
+                "classname" : "btn btn-default btn-lg",
                 "days" : -1,
                 "text" : "Все"
             },
             {
-                "classname" : "btn btn-default",
+                "classname" : "btn btn-default btn-lg",
                 "days" : 0,
                 "text" : "На сегодня"
             },
             {
-                "classname" : "btn btn-default",
+                "classname" : "btn btn-default btn-lg",
                 "days" : 1,
                 "text" : "На завтра"
             },
             {
-                "classname" : "btn btn-default",
+                "classname" : "btn btn-default btn-lg",
                 "days" : 7,
                 "text" : "На неделю"
             },
             {
-                "classname" : "btn btn-default",
+                "classname" : "btn btn-default btn-lg",
                 "days" : 30,
                 "text" : "На месяц"
             }

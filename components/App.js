@@ -3,6 +3,7 @@ import TaskList from './TaskList'
 import Navigations from './Navigations'
 import Tasks from '../fixtures'
 import ModalForm from './ModalForm'
+import Calendar from 'react-calendar';
 import '../css/css.css'
 import 'bootstrap/dist/css/bootstrap.css'
 
@@ -13,7 +14,8 @@ class App extends Component {
         this.state = {
             group: -1,
             openModal: false,
-            editTask: null
+            editTask: null,
+            date: new Date()
         }
 
         localStorage.setItem('Tasks', JSON.stringify(Tasks));
@@ -26,11 +28,21 @@ class App extends Component {
                     <h1 className="display-3">
                         TODO list
                     </h1>
-                    <button onClick={this.openModal.bind(this)}>create</button>
+                    <button onClick={this.openModal.bind(this)} className="btn btn-primary btn-lg">create</button>
                 </div>
-                <Navigations
-                    onGroupClick={this.onGroupClick.bind(this)}
-                />
+                <div className="row">
+                    <div className="col-sm-6">
+                        <Calendar
+                            onChange={this.onChangeCalendar}
+                            value={this.state.date}
+                        />
+                    </div>
+                    <div className="col-sm-6">
+                        <Navigations
+                            onGroupClick={this.onGroupClick.bind(this)}
+                        />
+                    </div>
+                </div>
                 <TaskList
                     tasks={this.filterBy(JSON.parse(localStorage.getItem('Tasks')), 'timetask', new Date())}
                     removeTask={this.handleRemoveTask.bind(this)}
@@ -44,6 +56,10 @@ class App extends Component {
                 />
             </div>
         )
+    }
+
+    onChangeCalendar = (e) => {
+        console.log(e)
     }
     
     onSubmitForm = (task) => {

@@ -14,8 +14,10 @@ class TaskList extends Component {
 
     render() {
         return (
-            <div className="row">
-                {this.renderTasks()}
+            <div className="tasklist">
+                <div className="row">
+                    {this.renderTasks()}
+                </div>
             </div>
         )
 

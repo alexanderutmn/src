@@ -22,3 +22,21 @@
     width: 100%;
     height: 100%;
 }
+
+.navigations{}
+.navigations button{
+    margin: 20px;
+    display: block;
+}
+
+.tasklist{
+    padding: 20px 0;
+}
+
+.tasklist .card{
+    margin: 10px 0;
+}
+
+.tasklist .card-header button+button{
+    margin-right: 10px;
+}

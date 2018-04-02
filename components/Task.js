@@ -15,8 +15,8 @@ class Task extends Component {
                         <h2 >
                             {task.title}
                             {task.important}
-                            <button className="btn btn-primary" onClick={editTask} data-id={task.id}>edit</button>
-                            <button className="btn btn-danger" onClick={removeTask} data-id={task.id}>delete</button>
+                            <button className="btn btn-primary float-right" onClick={editTask} data-id={task.id}>edit</button>
+                            <button className="btn btn-danger float-right" onClick={removeTask} data-id={task.id}>delete</button>
                         </h2>
                     </div>
                     <div className="card-body">
