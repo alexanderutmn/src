@@ -6,14 +6,17 @@ class ModalForm extends React.Component {
 
         this.state = {
             title: '',
-            important: '',
+            important: false,
             timetask: '',
             text: '',
-            people: ''
+            people: '',
+            id: null
         }
 
+        this.idEditTask = null
+
         this.handleInputChange = this.handleInputChange.bind(this);
-        this.handleSubmit = this.handleSubmit.bind(this);
+        // this.handleSubmit = this.handleSubmit.bind(this);
 
 
     }
@@ -26,8 +29,18 @@ class ModalForm extends React.Component {
                 important: nextProps.task.important,
                 timetask: nextProps.task.timetask,
                 text: nextProps.task.text,
-                people: nextProps.task.people
+                people: nextProps.task.people,
+                id: nextProps.task.id
             });
+        else
+            this.setState({
+                title: '',
+                important: false,
+                timetask: '',
+                text: '',
+                people: '',
+                id: null
+            })
     }
 
     handleInputChange(event) {
@@ -40,30 +53,31 @@ class ModalForm extends React.Component {
         });
     }
 
-    onCloseModal = () => {
-        const {onCloseModal} = this.props
-        this.setState({
-            title: '',
-            important: '',
-            timetask: '',
-            text: '',
-            people: ''
-        })
-        onCloseModal()
-    }
+    // onCloseModal = () => {
+    //     const {onCloseModal} = this.props
+    //     this.setState({
+    //         title: '',
+    //         important: '',
+    //         timetask: '',
+    //         text: '',
+    //         people: '',
+    //         id: null
+    //     })
+    //     onCloseModal()
+    // }
 
     handleSubmit = (e) => {
-        console.log(this.state)
         e.preventDefault()
-        console.log('sss')
+        const {handleSubmit} = this.props
+        handleSubmit(this.state)
     }
     
 
     render() {
-        const {open} = this.props
+        const {open, handleSubmit, onCloseModal} = this.props
         return (
             <div className="modal-form" style={{'display': open ? 'block' : 'none' }}>
-                <div className="modal-form__background" onClick={this.onCloseModal}>
+                <div className="modal-form__background" onClick={onCloseModal}>
 
                 </div>
                 <form onSubmit={this.handleSubmit}>
@@ -80,14 +94,13 @@ class ModalForm extends React.Component {
                             timetask
 
                         </label>
-                        <input name="timetask" type="text" className="form-control" value={this.state.timetask}
+                        <input name="timetask" type="date" className="form-control" value={this.state.timetask}
                                onChange={this.handleInputChange}/></div>
                     <div className="form-group">
                         <label htmlFor="">
                             text
                         </label>
-                        <input name="text" type="text" className="form-control" value={this.state.text} onChange={this.handleInputChange}/>
-
+                        <textarea className="form-control" value={this.state.text} onChange={this.handleInputChange}/>
                     </div>
                     <div className="form-group">
                         <label htmlFor="">
@@ -99,7 +112,7 @@ class ModalForm extends React.Component {
                     </div>
                     <div className="form-check">
 
-                        <input name="important" className="form-check-input" type="checkbox" value={this.state.important}
+                        <input name="important" className="form-check-input" type="checkbox" checked={ this.state.important ? 'checked' : ''}
                                onChange={this.handleInputChange}/>
                         <label htmlFor="" className="form-check-label">
                             important

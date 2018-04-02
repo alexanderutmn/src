@@ -6,7 +6,6 @@ import ModalForm from './ModalForm'
 import '../css/css.css'
 import 'bootstrap/dist/css/bootstrap.css'
 
-
 class App extends Component {
     constructor(props){
         super(props)
@@ -41,14 +40,39 @@ class App extends Component {
                     open={this.state.openModal}
                     onCloseModal={this.closeModal.bind(this)}
                     task={this.state.editTask}
-                    onSubmit={this.onSubmitForm.bind(this)}
+                    handleSubmit={this.onSubmitForm.bind(this)}
                 />
             </div>
         )
     }
     
-    onSubmitForm = () => {
-        
+    onSubmitForm = (task) => {
+
+        try {
+            var id = task.id,
+                tasks = JSON.parse(localStorage.getItem("Tasks"))
+
+            var index = tasks.findIndex((item) => {
+                return item.id == id
+            })
+
+            if(index >= 0)
+                tasks[index] = task
+            else
+                tasks.push(task)
+
+            localStorage.setItem("Tasks", JSON.stringify(tasks))
+
+            this.setState({
+                group: this.state.group
+            })
+            this.closeModal()
+            alert('Задача записана')
+        } catch (e){
+            alert('Произошла ошибка записи')
+            console.log(e)
+        }
+
     }
 
     onGroupClick = (group) => {
@@ -78,28 +102,39 @@ class App extends Component {
 
         return data.filter(item => {
             var d = new Date(item[field]),
-                razn = Math.floor((d-today) / (1000 * 60 * 60 * 24))
+                razn = Math.ceil((d-today) / (1000 * 60 * 60 * 24))
             var day = razn === -0 ? 0 : razn
 
-            return (day <= g && d.getDay() >= today.getDay())
+            if(day < 2)
+                return (day == g && d.getDay() >= today.getDay())
+            else
+                return (day <= g && d.getDay() >= today.getDay())
         })
     }
 
     handleRemoveTask = (e) => {
-        var id = e.target.dataset.id,
-            tasks = JSON.parse(localStorage.getItem("Tasks"))
+        try{
+            var id = e.target.dataset.id,
+                tasks = JSON.parse(localStorage.getItem("Tasks"))
 
-        var index = tasks.findIndex((item) => {
-            return item.id == id
-        })
+            var index = tasks.findIndex((item) => {
+                return item.id == id
+            })
 
-        tasks.splice(index, 1)
+            tasks.splice(index, 1)
 
-        localStorage.setItem("Tasks", JSON.stringify(tasks))
+            localStorage.setItem("Tasks", JSON.stringify(tasks))
 
-        this.setState({
-            group: this.state.group
-        })
+            this.setState({
+                group: this.state.group
+            })
+
+            alert('Задача успешно удалена')
+        }catch (error){
+            alert('Ошибка удаления')
+            console.log(error)
+        }
+
 
     }
 
