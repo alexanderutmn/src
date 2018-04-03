@@ -5,7 +5,9 @@ export default [
         "important":true,
         "title": "React Is Awesome!!!2",
         "text": "React makes it painless to create interactive UIs. Design simple views for each state in your application, and React will efficiently update and render just the right components when your data changes. \n We don't make assumptions about the rest of your technology stack, so you can develop new features in React without rewriting existing code. Build encapsulated components that manage their own state, then compose them to make complex UIs. Since component logic is written in JavaScript instead of templates, you can easily pass rich data through your app and keep state out of the DOM.",
-        "people" : "sasdas"
+        "people" : [
+            { id: 1, text: "Galina Fedorova" }, { id: 2, text: "Petrov Ivan" }
+        ]
     },
     {
         "id": "56c782f18990ecf954f6e022",
@@ -13,7 +15,9 @@ export default [
         "important":true,
         "title": "React Is Awesome!!!7",
         "text": "React makes it painless to create interactive UIs. Design simple views for each state in your application, and React will efficiently update and render just the right components when your data changes. \n We don't make assumptions about the rest of your technology stack, so you can develop new features in React without rewriting existing code. Build encapsulated components that manage their own state, then compose them to make complex UIs. Since component logic is written in JavaScript instead of templates, you can easily pass rich data through your app and keep state out of the DOM.",
-        "people" : "sasdas"
+        "people" : [
+            { id: 1, text: "Galina Fedorova" }, { id: 2, text: "Petrov Ivan" }
+        ]
     },
     {
         "id": "56c782f18990ecf954f6e023",
@@ -21,7 +25,9 @@ export default [
         "important":true,
         "title": "React Is Awesome!!!30",
         "text": "React makes it painless to create interactive UIs. Design simple views for each state in your application, and React will efficiently update and render just the right components when your data changes. \n We don't make assumptions about the rest of your technology stack, so you can develop new features in React without rewriting existing code. Build encapsulated components that manage their own state, then compose them to make complex UIs. Since component logic is written in JavaScript instead of templates, you can easily pass rich data through your app and keep state out of the DOM.",
-        "people" : "sasdas"
+        "people" : [
+            { id: 1, text: "Galina Fedorova" }, { id: 2, text: "Petrov Ivan" }
+        ]
     },
     {
         "id": "56c782f18990ecf954f6e024",
@@ -29,7 +35,9 @@ export default [
         "important":false,
         "title": "React Is Awesome!!!",
         "text": "React makes it painless to create interactive UIs. Design simple views for each state in your application, and React will efficiently update and render just the right components when your data changes. \n We don't make assumptions about the rest of your technology stack, so you can develop new features in React without rewriting existing code. Build encapsulated components that manage their own state, then compose them to make complex UIs. Since component logic is written in JavaScript instead of templates, you can easily pass rich data through your app and keep state out of the DOM.",
-        "people" : "sasdas"
+        "people" : [
+            { id: 1, text: "Galina Fedorova" }, { id: 2, text: "Petrov Ivan" }
+        ]
     },
     {
         "id": "56c782f18990ecf954f6e025",
@@ -37,7 +45,9 @@ export default [
         "important":true,
         "title": "React Is Awesome!!!",
         "text": "React makes it painless to create interactive UIs. Design simple views for each state in your application, and React will efficiently update and render just the right components when your data changes. \n We don't make assumptions about the rest of your technology stack, so you can develop new features in React without rewriting existing code. Build encapsulated components that manage their own state, then compose them to make complex UIs. Since component logic is written in JavaScript instead of templates, you can easily pass rich data through your app and keep state out of the DOM.",
-        "people" : "sasdas"
+        "people" : [
+            { id: 1, text: "Galina Fedorova" }, { id: 2, text: "Petrov Ivan" }
+        ]
     },
     {
         "id": "56c782f18990ecf954f6e026",
@@ -45,7 +55,9 @@ export default [
         "important":true,
         "title": "React Is Awesome!!!",
         "text": "React makes it painless to create interactive UIs. Design simple views for each state in your application, and React will efficiently update and render just the right components when your data changes. \n We don't make assumptions about the rest of your technology stack, so you can develop new features in React without rewriting existing code. Build encapsulated components that manage their own state, then compose them to make complex UIs. Since component logic is written in JavaScript instead of templates, you can easily pass rich data through your app and keep state out of the DOM.",
-        "people" : "sasdas"
+        "people" : [
+            { id: 1, text: "Galina Fedorova" }, { id: 2, text: "Petrov Ivan" }
+        ]
     },
     {
         "id": "56c782f18990ecf954f6e027",
@@ -53,7 +65,9 @@ export default [
         "important":true,
         "title": "React Is Awesome!!!",
         "text": "React makes it painless to create interactive UIs. Design simple views for each state in your application, and React will efficiently update and render just the right components when your data changes. \n We don't make assumptions about the rest of your technology stack, so you can develop new features in React without rewriting existing code. Build encapsulated components that manage their own state, then compose them to make complex UIs. Since component logic is written in JavaScript instead of templates, you can easily pass rich data through your app and keep state out of the DOM.",
-        "people" : "sasdas"
+        "people" : [
+            { id: 1, text: "Galina Fedorova" }, { id: 2, text: "Petrov Ivan" }
+        ]
     },
 
 

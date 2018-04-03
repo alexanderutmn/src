@@ -24,8 +24,10 @@ class TaskList extends Component {
     }
 
     renderTasks = () => {
-        const {removeTask, editTask} = this.props
-        return this.props.tasks.map((task, index) =>
+        const {removeTask, editTask, tasks} = this.props
+        if(tasks.length === 0)
+            return (<div className="col-sm-6"><h4>Zadach ne naideno</h4></div>)
+        return tasks.map((task, index) =>
             <Task
                 key = {index}
                 task={task}

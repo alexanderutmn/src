@@ -7,7 +7,7 @@ class Navigations extends Component {
         super(props)
 
         this.state = {
-            currentButton: 0
+            currentButton: null
         }
 
         this.needButtons = [

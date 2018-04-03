@@ -15,7 +15,8 @@ class App extends Component {
             group: -1,
             openModal: false,
             editTask: null,
-            date: new Date()
+            dateCalendar: new Date(),
+            pickCalendar: false
         }
 
         localStorage.setItem('Tasks', JSON.stringify(Tasks));
@@ -44,7 +45,7 @@ class App extends Component {
                     </div>
                 </div>
                 <TaskList
-                    tasks={this.filterBy(JSON.parse(localStorage.getItem('Tasks')), 'timetask', new Date())}
+                    tasks={this.filterTasks(JSON.parse(localStorage.getItem('Tasks')))}
                     removeTask={this.handleRemoveTask.bind(this)}
                     editTask={this.handleEditTask.bind(this)}
                 />
@@ -58,8 +59,11 @@ class App extends Component {
         )
     }
 
-    onChangeCalendar = (e) => {
-        console.log(e)
+    onChangeCalendar = (dateCalendar) => {
+        this.setState({
+            pickCalendar: true,
+            dateCalendar: dateCalendar
+        })
     }
     
     onSubmitForm = (task) => {
@@ -74,8 +78,11 @@ class App extends Component {
 
             if(index >= 0)
                 tasks[index] = task
-            else
+            else{
+                task.id = Math.random()
                 tasks.push(task)
+            }
+
 
             localStorage.setItem("Tasks", JSON.stringify(tasks))
 
@@ -93,7 +100,8 @@ class App extends Component {
 
     onGroupClick = (group) => {
         this.setState({
-            group: group
+            group: group,
+            pickCalendar: false
         })
     }
 
@@ -110,21 +118,38 @@ class App extends Component {
         })
     }
 
-    filterBy = (data, field, today) => {
-        var g = this.state.group
+    filterTasks = (data) => {
+        var {group, pickCalendar} = this.state
 
-        if(g == -1)
+        if(group == -1 && !pickCalendar)
             return data
 
+        if(pickCalendar)
+            return this.filterByCalendar(data)
+
+        return this.filterByGroup(data, group)
+    }
+
+    filterByCalendar = (data) => {
         return data.filter(item => {
-            var d = new Date(item[field]),
+            var d = new Date(item.timetask),
+                dayC = new Date(this.state.dateCalendar)
+
+            return (d.getDate() == dayC.getDate() && d.getMonth() == dayC.getMonth() && d.getFullYear() == dayC.getFullYear())
+        })
+    }
+
+    filterByGroup = (data, group) => {
+        var today = new Date()
+        return data.filter(item => {
+            var d = new Date(item.timetask),
                 razn = Math.ceil((d-today) / (1000 * 60 * 60 * 24))
             var day = razn === -0 ? 0 : razn
 
             if(day < 2)
-                return (day == g && d.getDay() >= today.getDay())
+                return (day == group && d.getDay() >= today.getDay())
             else
-                return (day <= g && d.getDay() >= today.getDay())
+                return (day <= group && d.getDay() >= today.getDay())
         })
     }
 
@@ -150,8 +175,6 @@ class App extends Component {
             alert('Ошибка удаления')
             console.log(error)
         }
-
-
     }
 
     handleEditTask = (e) => {
